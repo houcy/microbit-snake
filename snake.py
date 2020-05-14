@@ -13,7 +13,7 @@ class Snake:
                 game = Snake()
             init stands for "Initialisation"
         """
-        self.current_direction = "up"
+        self.direction = "up"
         # snake is a list of the pixels that the snake is at
         self.snake = [[2, 2]]
         # food is the co-ords of the current food
@@ -31,14 +31,14 @@ class Snake:
         # abs is the absolute function eg -1 => 1, 1 => 1
         if abs(x) > abs(y):
             if x < 0:
-                self.current_direction = "left"
+                self.direction = "left"
             else:
-                self.current_direction = "right"
+                self.direction = "right"
         else:
             if y < 0:
-                self.current_direction = "up"
+                self.direction = "up"
             else:
-                self.current_direction = "down"
+                self.direction = "down"
 
     def update(self):
         """ This function will update the game state
@@ -46,13 +46,13 @@ class Snake:
         """
         # copy the old head
         new_head = list(self.snake[-1])
-        if self.current_direction == "up":
+        if self.direction == "up":
             new_head[1] -= 1
-        elif self.current_direction == "down":
+        elif self.direction == "down":
             new_head[1] += 1
-        elif self.current_direction == "left":
+        elif self.direction == "left":
             new_head[0] -= 1
-        elif self.current_direction == "right":
+        elif self.direction == "right":
             new_head[0] += 1
 
         # make sure co-ords within bounds
@@ -74,7 +74,7 @@ class Snake:
             while self.food in self.snake:
                 self.food = [randint(0, 4), randint(0, 4)]
         else:
-            self.snake = self.snake[1:]
+            self.snake.pop(0)
 
     def draw(self):
         """ This makes the game appear on the LEDs. """
