@@ -19,7 +19,7 @@ class Snake:
         # self.snake = [[2, 2]]
         ## food is the co-ords of the current food
         # self.food =
-        ## whether or not to end the game, used after update
+        ## whether or not to end the game (boolean)
         # self.end =
         pass
 
